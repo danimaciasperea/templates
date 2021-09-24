@@ -54,7 +54,7 @@ This will:
 
 Now we will create a few rules. First rule is used to prevent the device going into countdown mode (f.e. using on device controls) and complete MCU status update on restart.
 ```console
-Rule1 on tuyareceived#dptype4id13!=0 do tuyasend4 13,0 endon on scheme#data!=0 do backlog0 scheme 0; tuyaenum2 0 endon
+Rule1 on tuyareceived#dptype4id13!=0 do tuyasend4 13,0 endon on scheme#data!=0 do backlog0 scheme 0; tuyaenum2 0 endon on System#Boot do Backlog delay 10; power2 0 endon
 ```
 Second rule sends two new MQTT topics: an error topic in case of the device is running out of water and a fanmode topic the mist strength  
 ```console
